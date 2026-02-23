@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel EDICSON</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#0a0a0a;color:white;display:flex;align-items:center;justify-content:center;height:100vh}
+.box{background:#141414;padding:25px;border-radius:20px;width:320px;text-align:center;box-shadow:0 0 25px rgba(255,208,0,.3)}
+input,select{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none}
+button{background:#ffd000;border:none;padding:10px;width:100%;border-radius:10px;font-weight:bold}
+.panel{display:none;margin-top:15px}
+.item{background:#1b1b1b;padding:10px;border-radius:10px;margin-top:8px}
+.admin{display:none}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h3>Área clientes</h3>
+<input id="user" placeholder="Usuario">
+<input id="pass" placeholder="Clave">
+<button onclick="login()">Entrar</button>
+
+<div class="panel" id="clientePanel"></div>
+
+<hr>
+<button onclick="adminLogin()">Admin</button>
+
+<div class="admin" id="admin">
+
+<h3>Crear cliente</h3>
+
+<input id="nUser" placeholder="Usuario">
+<input id="nPass" placeholder="Clave">
+
+<select id="servicio">
+<option>Netflix</option>
+<option>Disney</option>
+<option>HBO</option>
+<option>IPTV</option>
+<option>Spotify</option>
+</select>
+
+<select id="tipo">
+<option>Individual</option>
+<option>Compartida</option>
+</select>
+
+<input id="vence" placeholder="Días de duración">
+
+<button onclick="crear()">Guardar cliente</button>
+
+<div id="lista"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let db=JSON.parse(localStorage.getItem("clientes")||"[]");
+
+function save(){
+localStorage.setItem("clientes",JSON.stringify(db));
+mostrarLista();
+}
+
+function login(){
+let u=user.value;
+let p=pass.value;
+let c=db.find(x=>x.user==u && x.pass==p);
+if(!c){alert("Datos incorrectos");return;}
+clientePanel.style.display="block";
+clientePanel.innerHTML=`
+<div class="item">
+Servicio: ${c.servicio}<br>
+Tipo: ${c.tipo}<br>
+Vence en: ${c.vence} días<br>
+<a href="https://wa.me/56999225842">Soporte WhatsApp</a>
+</div>`;
+}
+
+function adminLogin(){
+let clave=prompt("Clave admin");
+if(clave==="edicson123"){
+admin.style.display="block";
+mostrarLista();
+}
+}
+
+function crear(){
+db.push({
+user:nUser.value,
+pass:nPass.value,
+servicio:servicio.value,
+tipo:tipo.value,
+vence:vence.value
+});
+save();
+}
+
+function mostrarLista(){
+lista.innerHTML="";
+db.forEach((c,i)=>{
+lista.innerHTML+=`
+<div class="item">
+${c.user} — ${c.servicio}
+<button onclick="delCli(${i})">Eliminar</button>
+</div>`;
+});
+}
+
+function delCli(i){
+db.splice(i,1);
+save();
+}
+
+</script>
+
+</body>
+</html>

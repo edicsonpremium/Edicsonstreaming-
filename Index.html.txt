@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDICSON STREAMING</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#0a0a0a;color:white;text-align:center}
+.hero{padding:60px 20px}
+.logo{width:170px;border-radius:20px;box-shadow:0 0 30px rgba(255,208,0,.4)}
+h1{color:#ffd000}
+.btn{background:#ffd000;color:black;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:20px}
+.planes{padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#141414;padding:20px;border-radius:20px;box-shadow:0 0 20px rgba(255,208,0,.2)}
+.card h3{color:#ffd000}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#ffd000;color:black;padding:14px;border-radius:50px;text-decoration:none;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<img src="logo.png" class="logo">
+<h1>EDICSON STREAMING</h1>
+<p>Suscripciones premium al mejor precio</p>
+<a class="btn" href="panel-pro.html">Área clientes</a>
+</section>
+
+<section class="planes">
+<div class="card"><h3>Netflix</h3><p>$2800</p></div>
+<div class="card"><h3>Disney</h3><p>$2800</p></div>
+<div class="card"><h3>HBO Max</h3><p>$2500 / $6500</p></div>
+<div class="card"><h3>Paramount</h3><p>$2500</p></div>
+<div class="card"><h3>Prime Video</h3><p>$2500</p></div>
+<div class="card"><h3>Vix</h3><p>$2000</p></div>
+<div class="card"><h3>ChatGPT</h3><p>$3500</p></div>
+<div class="card"><h3>Spotify</h3><p>$3500</p></div>
+<div class="card"><h3>Canva</h3><p>$1500</p></div>
+<div class="card"><h3>YouTube</h3><p>$2000</p></div>
+<div class="card"><h3>IPTV</h3><p>$2500</p></div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/56999225842">WhatsApp</a>
+
+</body>
+</html>
